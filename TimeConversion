@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class ComputeTime {
+	public static void main(String[] args) {
+		
+		// Declared Variables
+		String time;	
+		int timeHH;		// Time In Hours
+		int timeMM;		// Time in Minutes
+		String TOD;		
+		String[] TODArray;
+		
+		
+		//Take Input from user
+		Scanner input = new Scanner(System.in);
+		
+		//Time Input
+		System.out.print("Enter the time (HH:MM): ");
+		time = input.next();
+		
+		//Time of day input
+		System.out.println("Enter PM or AM: ");
+		TOD = input.next();
+		
+		TODArray = time.split(":", 2);
+		
+		timeHH = Integer.parseInt(TODArray[0]);
+		timeMM = Integer.parseInt(TODArray[1]);
+		
+			// Testing AM and PM Conditions
+			if (timeHH < 1 || timeHH > 12 || timeMM < 0 || timeMM > 59) {
+				System.out.println("Error: " + timeHH + ":" + timeMM + " is not a valid time.");
+			}
+			else if ((TOD.contentEquals("PM")) && (timeHH < 12)) {
+				System.out.println("The time in Military time is: " + (timeHH + 12) + ":" + timeMM);
+			}
+			else if ((TOD.contentEquals("AM")) && (timeHH == 12)) {
+				System.out.println("The time in Military time is 00:" + timeMM);
+			}
+			else {
+				System.out.println("The time in Military time is: " + timeHH + ":" + timeMM);
+			}
+		
+		input.close();
+	}
+}
+
+
+
